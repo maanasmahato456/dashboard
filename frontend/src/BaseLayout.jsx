@@ -3,19 +3,23 @@ import {
     AppShell,
     Navbar,
     Header,
-    Text,
-    MediaQuery,
-    Burger,
     useMantineTheme,
     NavLink,
+    Flex,
+    ActionIcon,
+    MediaQuery,
+    Burger,
 } from '@mantine/core';
+import { IconLogin } from '@tabler/icons';
 import { useNavigate } from 'react-router-dom';
 import App from './App';
 
 function BaseLayOut() {
     const navigate = useNavigate();
     const theme = useMantineTheme();
-    const [opened, setOpened] = useState(false)
+    const [opened, setOpened] = useState(false);
+    //const [LoginModal, setLoginModal] = useState(false);
+
     return (
         <AppShell
             styles={{
@@ -29,13 +33,14 @@ function BaseLayOut() {
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 250 }}>
                     <NavLink label="Home" onClick={() => { navigate('/'); }} />
                     <NavLink label="Products" onClick={() => { navigate('/products'); }} />
+                    <NavLink label="users" onClick={() => { navigate('/users'); }} />
                     <NavLink label="Sales" onClick={() => { navigate('/sales'); }} />
                     <NavLink label="Analytics" onClick={() => { navigate('/analytics'); }} />
                 </Navbar>
             }
             header={
                 <Header height={{ base: 50, md: 60 }} p="md">
-                    <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+                    <Flex justify={'space-between'} align="center" style={{ height: '100%' }}>
                         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                             <Burger
                                 opened={opened}
@@ -45,9 +50,9 @@ function BaseLayOut() {
                                 mr="xl"
                             />
                         </MediaQuery>
-
-                        <Text>Application header</Text>
-                    </div>
+                        <h3>My Dashboard</h3>
+                        <ActionIcon variant="outline" ><IconLogin size={16} /></ActionIcon>
+                    </Flex>
                 </Header>
             }
         >

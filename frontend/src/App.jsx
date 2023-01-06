@@ -1,17 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Sales from './pages/Sales';
-import Analytics from './pages/Analytics';
+import Home from './pages/Home/Home';
+import Products from './pages/Products/Products';
+import Sales from './pages/Sales/Sales';
+import Analytics from './pages/Analytics/Analytics';
+import Users from './pages/Users/Users';
+//import LoginModal from './components/Modals/LoginModal';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/products' element={<Products />} />
-      <Route path='/sales' element={<Sales />} />
-      <Route path='/analytics' element={<Analytics />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/sales' element={<Sales />} />
+        <Route path='/analytics' element={<Analytics />} />
+      </Routes>
+    </div>
+
   )
 }
 

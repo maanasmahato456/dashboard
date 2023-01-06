@@ -1,0 +1,13 @@
+@media (max-width:850px) {
+    .p-card-width {
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 851px) {
+    .p-card-width {
+        width: 30%;
+    }
+
+}
