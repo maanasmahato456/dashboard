@@ -35,18 +35,6 @@ function Products() {
 
                                 <Group position="apart" mt="md" mb="xs" display="block">
                                     <Text weight={500}>{title}</Text>
-                                    <Badge color="pink" variant="light">
-                                        Manufacture Date: {relasedDate}
-                                    </Badge>
-                                </Group>
-
-                                <Group display="block">
-                                    <Text size="md" color="dimmed">
-                                        {desc}
-                                    </Text>
-                                    <Text size="sm" color="dimmed">
-                                        Pirce: Rs.{price}
-                                    </Text>
                                 </Group>
 
                                 <Group display="inline" mt="lg" >

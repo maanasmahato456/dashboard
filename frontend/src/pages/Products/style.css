@@ -3,11 +3,19 @@
         width: 100%;
     }
 
+    .p-form-width {
+        width: 95%;
+    }
+
 }
 
 @media (min-width: 851px) {
     .p-card-width {
         width: 30%;
+    }
+
+    .p-form-width {
+        width: 50%;
     }
 
 }

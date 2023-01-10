@@ -16,17 +16,6 @@
       "type": "string",
       "required": true
     },
-    "desc": {
-      "type": "string",
-      "required": false
-    },
-    "price": {
-      "type": "integer",
-      "required": true
-    },
-    "relasedDate": {
-      "type": "date"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -34,10 +23,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "count": {
-      "type": "integer",
-      "required": true
     },
     "product_categories": {
       "type": "relation",

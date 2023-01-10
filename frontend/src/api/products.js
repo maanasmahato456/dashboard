@@ -21,4 +21,4 @@ async function deleteProduct() {
 
 }
 
-export { getProducts, addProduct, updateProduct, deleteProduct };
+export { getProducts, addProduct, updateProduct, deleteProduct, productApi };
