@@ -3,10 +3,10 @@ import { hasLength, isNotEmpty, useForm } from '@mantine/form';
 import { TextInput, FileInput, Group, Button } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { productApi } from '../../api/products';
-import './style.css'
+import { productApi } from '../../../api/products';
+import '../style.css'
 
-function ProductForm() {
+function UpdateForm() {
     const { id } = useParams('');
     const [product, setProduct] = useState({ title: '', image: null });
 
@@ -27,14 +27,21 @@ function ProductForm() {
         return res.data;
     }
 
-    const { data, isError, isInitialLoading, error } = useQuery({
+    const handleChange = (e) => {
+        setProduct({ ...product, [e.target.name]: e.target.value });
+    }
+
+    const handleForm = (e) => {
+        e.preventDefault();
+        console.log(product);
+    }
+
+
+    const { data, isError, error } = useQuery({
         queryKey: ['product'],
         queryFn: id ? async () => fetchIdData() : null
     })
-    if (isInitialLoading) {
-        return <div>loading...</div>
-    }
-    else if (isError) {
+    if (isError) {
         console.log(error);
     }
     else if (data) {
@@ -45,8 +52,8 @@ function ProductForm() {
     return (
         <form className='p-form-width' style={{ marginInline: "auto" }} onSubmit={form.onSubmit(() => { })} onReset={form.onReset}>
             <Group display="block">
-                <TextInput label="Title" placeholder='Name of the product' defaultValue={product.title} {...form.getInputProps('title')} />
-                <FileInput label="Image" placeholder='Product image' {...form.getInputProps('image')} />
+                <TextInput label="Title" name='title' placeholder='Name of the product' {...form.getInputProps('title')} onChange={handleChange} />
+                <FileInput label="Image" name='image' placeholder='Product image' {...form.getInputProps('image')} onChange={handleChange} />
             </Group>
             <Group display="inline">
                 <Button mt="md" mr="xs" variant='filled' type='submit'>Add</Button>
@@ -57,4 +64,4 @@ function ProductForm() {
     )
 }
 
-export default ProductForm;
+export default UpdateForm;
