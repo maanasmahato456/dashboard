@@ -5,12 +5,15 @@ const productApi = axios.create({
 })
 
 async function getProducts() {
-    const res = await productApi.get('/api/products?populate=*');
+    const res = await productApi.get('/api/products');
     return res.data;
 }
 
-async function addProduct() {
-
+async function addProduct(data) {
+    console.log(data);
+    await productApi.post('/api/products', {
+        "data": data
+    });
 }
 
 async function updateProduct() {

@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Flex, Card, Text, Group, Badge, Button, Image } from '@mantine/core';
+import { ActionIcon, Button, Space, Table } from '@mantine/core';
 import { getProducts } from "../../api/products";
+import { FcCancel, FcAddImage } from 'react-icons/fc';
+import { BsPlusSquare } from 'react-icons/bs';
 import './style.css';
 
 function Products() {
-    const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
     const { data, isError, error, isInitialLoading } = useQuery({
-        queryKey: [products],
+        queryKey: ['products'],
         queryFn: () => getProducts()
     })
 
@@ -18,38 +20,32 @@ function Products() {
         console.log(error);
     }
     else {
-        console.log();
+        console.log(data.data);
+        const rows = data.data.map((item, idx) => (
+            <tr key={idx}>
+                <td>{item.attributes.title}</td>
+                <td>{item.attributes.count}</td>
+                <td>{item.attributes.price}</td>
+                <td><ActionIcon><FcAddImage size={16} /></ActionIcon></td>
+                <td><ActionIcon><FcCancel size={16} /></ActionIcon></td>
+            </tr>
+        ))
         return (
             <section>
-                <Flex gap="lg" direction="row" justify="space-evenly" wrap="wrap">
-                    {
-                        data.data.map((item, idx) => {
-                            const { title, image, desc, count, relasedDate, price } = item.attributes;
-                            return <Card shadow="sm" p="lg" radius="md" withBorder key={idx} className='p-card-width'>
-                                <Card.Section>
-                                    <Image
-                                        src={`http://localhost:1337${image.data.attributes.url}`}
-                                        alt={title}
-                                    />
-                                </Card.Section>
-
-                                <Group position="apart" mt="md" mb="xs" display="block">
-                                    <Text weight={500}>{title}</Text>
-                                </Group>
-
-                                <Group display="inline" mt="lg" >
-                                    <Button variant="light" color="blue" mt="md" mr="xs" radius="md">
-                                        Update
-                                    </Button>
-                                    <Button variant="light" color="blue" mt="md" ml="xs" radius="md">
-                                        Delete
-                                    </Button>
-                                </Group>
-
-                            </Card>
-                        })
-                    }
-                </Flex>
+                <Button onClick={() => navigate('/products/add')} ><BsPlusSquare size={24} /></Button>
+                <Space h="lg" />
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>In Stock</th>
+                            <th>Price</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </Table>
             </section>
         )
     }

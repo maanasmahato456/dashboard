@@ -16,19 +16,19 @@
       "type": "string",
       "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "product_categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product-category.product-category",
       "inversedBy": "products"
+    },
+    "count": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "price": {
+      "type": "integer"
     }
   }
 }

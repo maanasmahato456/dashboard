@@ -35,7 +35,6 @@ function BaseLayOut() {
                     <NavLink label="Products" onClick={() => { navigate('/products'); }} />
                     <NavLink label="users" onClick={() => { navigate('/users'); }} />
                     <NavLink label="Sales" onClick={() => { navigate('/sales'); }} />
-                    <NavLink label="Analytics" onClick={() => { navigate('/analytics'); }} />
                 </Navbar>
             }
             header={

@@ -1,32 +1,31 @@
-//import { useState } from 'react';
-import { hasLength, isNotEmpty, useForm } from '@mantine/form';
-import { TextInput, FileInput, Group, Button } from '@mantine/core';
+import { hasLength, useForm } from '@mantine/form';
+import { TextInput, Group, Button, NumberInput } from '@mantine/core';
 import '../style.css';
-import axios from 'axios';
+import { addProduct } from '../../../api/products';
 function AddForm() {
-    //const [product, setProduct] = useState({ title: '', image: null });
-
     const form = useForm({
         initialValues: {
             title: '',
-            image: null
+            count: 0,
+            price: 0,
+            product_categories: [1]
         },
         validate: {
-            title: hasLength({ min: 2, max: 50 }, 'Title must be 2-50 characters long'),
-            image: isNotEmpty("Enter the image of the product")
+            title: hasLength({ min: 2, max: 50 }, 'Title must be 2-50 characters long')
         }
 
     })
     const handleForm = async (values) => {
-        //setProduct({ title: values.title, file: values.image });
-        console.log(values);
+        await addProduct(values);
+        //console.log(values);
     }
 
     return (
         <form className='p-form-width' style={{ marginInline: "auto" }} onSubmit={form.onSubmit((values) => handleForm(values))} onReset={form.onReset}>
             <Group display="block">
                 <TextInput label="Title" placeholder='Name of the product' {...form.getInputProps('title')} />
-                <FileInput label="Image" placeholder='Product image' {...form.getInputProps('image')} />
+                <NumberInput label="Count"  {...form.getInputProps('count')} />
+                <NumberInput label="Price"  {...form.getInputProps('price')} />
             </Group>
             <Group display="inline">
                 <Button mt="md" mr="xs" variant='filled' type='submit' >Add</Button>

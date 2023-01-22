@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import Sales from './pages/Sales/Sales';
-import Analytics from './pages/Analytics/Analytics';
 import Users from './pages/Users/Users';
 import AddForm from './pages/Products/Forms/AddForm';
 import UpdateForm from './pages/Products/Forms/UpdateForm';
@@ -21,7 +20,6 @@ function App() {
         </Route>
         <Route path='/users' element={<Users />} />
         <Route path='/sales' element={<Sales />} />
-        <Route path='/analytics' element={<Analytics />} />
       </Routes>
     </div>
 
