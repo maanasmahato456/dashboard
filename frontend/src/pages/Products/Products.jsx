@@ -13,6 +13,10 @@ function Products() {
         queryFn: () => getProducts()
     })
 
+    const updateItem = (id) => {
+        navigate(`/products/update/${id}`);
+    }
+
     if (isInitialLoading) {
         return <h1>loading...</h1>
     }
@@ -26,7 +30,7 @@ function Products() {
                 <td>{item.attributes.title}</td>
                 <td>{item.attributes.count}</td>
                 <td>{item.attributes.price}</td>
-                <td><ActionIcon><FcAddImage size={16} /></ActionIcon></td>
+                <td><ActionIcon onClick={() => updateItem(item.id)}><FcAddImage size={16} /></ActionIcon></td>
                 <td><ActionIcon><FcCancel size={16} /></ActionIcon></td>
             </tr>
         ))

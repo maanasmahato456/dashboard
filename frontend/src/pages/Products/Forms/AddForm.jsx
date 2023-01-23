@@ -7,8 +7,7 @@ function AddForm() {
         initialValues: {
             title: '',
             count: 0,
-            price: 0,
-            product_categories: [1]
+            price: 0
         },
         validate: {
             title: hasLength({ min: 2, max: 50 }, 'Title must be 2-50 characters long')
@@ -17,7 +16,6 @@ function AddForm() {
     })
     const handleForm = async (values) => {
         await addProduct(values);
-        //console.log(values);
     }
 
     return (

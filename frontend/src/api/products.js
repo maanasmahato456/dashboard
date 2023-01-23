@@ -16,7 +16,8 @@ async function addProduct(data) {
     });
 }
 
-async function updateProduct() {
+async function updateProduct(data) {
+    console.log(data);
 
 }
 
