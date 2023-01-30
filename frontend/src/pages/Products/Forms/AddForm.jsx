@@ -1,7 +1,7 @@
 import { hasLength, useForm } from '@mantine/form';
 import { TextInput, Group, Button, NumberInput } from '@mantine/core';
-import '../style.css';
 import { addProduct } from '../../../api/products';
+import '../style.css';
 function AddForm() {
     const form = useForm({
         initialValues: {

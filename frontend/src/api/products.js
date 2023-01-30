@@ -10,19 +10,19 @@ async function getProducts() {
 }
 
 async function addProduct(data) {
-    console.log(data);
     await productApi.post('/api/products', {
         "data": data
     });
 }
 
 async function updateProduct(data) {
-    console.log(data);
-
+    await productApi.put(`/api/products/${data.id}`, {
+        "data": data
+    })
 }
 
-async function deleteProduct() {
-
+async function deleteProduct(id) {
+    await productApi.delete(`/api/products/${id}`);
 }
 
 export { getProducts, addProduct, updateProduct, deleteProduct, productApi };

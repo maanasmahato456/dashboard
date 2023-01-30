@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ActionIcon, Button, Space, Table } from '@mantine/core';
-import { getProducts } from "../../api/products";
+import { deleteProduct, getProducts } from "../../api/products";
 import { FcCancel, FcAddImage } from 'react-icons/fc';
 import { BsPlusSquare } from 'react-icons/bs';
 import './style.css';
@@ -31,7 +31,7 @@ function Products() {
                 <td>{item.attributes.count}</td>
                 <td>{item.attributes.price}</td>
                 <td><ActionIcon onClick={() => updateItem(item.id)}><FcAddImage size={16} /></ActionIcon></td>
-                <td><ActionIcon><FcCancel size={16} /></ActionIcon></td>
+                <td><ActionIcon onClick={() => deleteProduct(item.id)}><FcCancel size={16} /></ActionIcon></td>
             </tr>
         ))
         return (
