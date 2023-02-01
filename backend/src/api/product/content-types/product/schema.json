@@ -16,12 +16,6 @@
       "type": "string",
       "required": true
     },
-    "product_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-category.product-category",
-      "inversedBy": "products"
-    },
     "count": {
       "type": "integer",
       "default": 0,
@@ -29,6 +23,11 @@
     },
     "price": {
       "type": "integer"
+    },
+    "category": {
+      "type": "string",
+      "default": "all",
+      "required": false
     }
   }
 }

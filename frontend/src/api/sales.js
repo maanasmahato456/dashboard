@@ -7,14 +7,13 @@ const salesApi = axios.create({
 
 async function getSales() {
     const res = await salesApi.get('/api/sales');
+    return res.data;
 }
 
-async function addSale() { }
 
-async function updateSale() { }
-
-
-async function deleteSale() { }
+async function deleteSale(id) {
+    await salesApi.delete(`/api/sales/${id}`)
+}
 
 
-export { getSales, addSale, updateSale, deleteSale };
+export { getSales, deleteSale };

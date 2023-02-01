@@ -24,21 +24,20 @@ function Products() {
         console.log(error);
     }
     else {
-        console.log(data.data);
-        const rows = data.data.map((item, idx) => (
-            <tr key={idx}>
+        const rows = data.data.map((item, idx) => {
+            return <tr key={idx}>
                 <td>{item.attributes.title}</td>
                 <td>{item.attributes.count}</td>
                 <td>{item.attributes.price}</td>
                 <td><ActionIcon onClick={() => updateItem(item.id)}><FcAddImage size={16} /></ActionIcon></td>
                 <td><ActionIcon onClick={() => deleteProduct(item.id)}><FcCancel size={16} /></ActionIcon></td>
             </tr>
-        ))
+        })
         return (
             <section>
                 <Button onClick={() => navigate('/products/add')} ><BsPlusSquare size={24} /></Button>
                 <Space h="lg" />
-                <Table>
+                <Table highlightOnHover withBorder withColumnBorders>
                     <thead>
                         <tr>
                             <th>Product Name</th>

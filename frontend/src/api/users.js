@@ -6,18 +6,12 @@ const userApi = axios.create({
 })
 
 async function getUser() {
-    const res = await userApi.get('/api/users');
+    const res = await userApi.get('/api/customers');
+    return res.data;
 }
-
-async function addUser() {
-    const rest = await userApi.post('/api/users');
-}
-async function updateUser() {
-
-}
-async function deleteUser() {
-
+async function deleteUser(id) {
+    await userApi.delete(`/api/customers/${id}`);
 }
 
 
-export { getUser, addUser, updateUser, deleteUser };
+export { getUser, deleteUser };
