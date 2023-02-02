@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { deleteUser, getUser } from '../../api/users';
-import { ActionIcon, Table } from '@mantine/core';
-import { FcCancel } from 'react-icons/fc';
+import { ActionIcon, Card, Table, Group, Input, Button, Space } from '@mantine/core';
+import { FcCancel, FcSearch } from 'react-icons/fc';
 
 function Users() {
     const { data, isInitialLoading, isError, error } = useQuery({
@@ -24,20 +24,30 @@ function Users() {
             </tr>
         })
         return (
-            <Table highlightOnHover withBorder withColumnBorders>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone no.</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </Table>
+            <section>
+                <Group position="left">
+                    <Input style={{ width: "60%" }} icon={<FcSearch size={16} />} placeholder="search" rightSection={<Button>Search</Button>} />
+                </Group>
+                <Space h="lg" />
+                <Card shadow="lg">
+                    <Table highlightOnHover withBorder withColumnBorders>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone no.</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>{rows}</tbody>
+                    </Table>
+                </Card>
+            </section>
+
+
         )
     }
 
 }
 
-export default Users
+export default Users;

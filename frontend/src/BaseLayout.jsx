@@ -18,7 +18,6 @@ function BaseLayOut() {
     const navigate = useNavigate();
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
-    //const [LoginModal, setLoginModal] = useState(false);
 
     return (
         <AppShell

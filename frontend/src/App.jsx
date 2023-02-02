@@ -6,8 +6,6 @@ import Users from './pages/Users/Users';
 import AddForm from './pages/Products/Forms/AddForm';
 import UpdateForm from './pages/Products/Forms/UpdateForm';
 
-//import LoginModal from './components/Modals/LoginModal';
-
 function App() {
   return (
     <div>

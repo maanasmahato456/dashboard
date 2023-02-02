@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Group, Button, TextInput } from '@mantine/core';
+import { Group, Button, TextInput, Card } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { productApi, updateProduct } from '../../../api/products';
 import '../style.css'
@@ -32,16 +32,19 @@ function UpdateForm() {
         updateProduct(updatedData);
     }
     return (
+
         <form className='p-form-width' style={{ marginInline: "auto" }} onSubmit={handleSubmit} >
-            <Group display="block">
-                <TextInput label="Title" type="text" name="title" placeholder='Name of the product' defaultValue={title || ''} onChange={e => setTitle(e.target.value)} />
-                <TextInput label="Count" type="number" name="count" value={count || ''} onChange={e => setCount(e.target.value)} />
-                <TextInput label="Price" type="number" name="price" value={price || ''} onChange={e => setPrice(e.target.value)} />
-            </Group>
-            <Group display="inline">
-                <Button mt="md" mr="xs" variant='filled' type='submit' >Update</Button>
-                <Button mt="md" ml="xs" variant='default' type='reset'>Reset</Button>
-            </Group>
+            <Card shadow="lg" >
+                <Group display="block">
+                    <TextInput label="Title" type="text" name="title" placeholder='Name of the product' defaultValue={title || ''} onChange={e => setTitle(e.target.value)} />
+                    <TextInput label="Count" type="number" name="count" value={count || ''} onChange={e => setCount(e.target.value)} />
+                    <TextInput label="Price" type="number" name="price" value={price || ''} onChange={e => setPrice(e.target.value)} />
+                </Group>
+                <Group display="inline">
+                    <Button mt="md" mr="xs" variant='filled' type='submit' >Update</Button>
+                    <Button mt="md" ml="xs" variant='default' type='reset'>Reset</Button>
+                </Group>
+            </Card >
         </form >
     );
 }
